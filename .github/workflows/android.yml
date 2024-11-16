@@ -8,19 +8,30 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
+      # Checkout the main repository with submodules
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # This ensures submodules are initialized
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+      # Set up JDK 17 for Android/Kotlin development
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Grant execute permissions for gradlew
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Build with Gradle
+      - name: Build with Gradle
+        run: ./gradlew build 
+
+      # Run tests
+      - name: Run tests
+        run: ./gradlew test
