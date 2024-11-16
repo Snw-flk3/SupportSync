@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_spiral">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/delivery_completion"
+            android:textColor="@color/DarkBlue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="111dp"
+            android:layout_height="49dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-55dp"
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/asset_sync_logo" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:textColor="@color/DarkBlue"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewDriverId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/DarkBlue"
+        android:text="@string/driver_id"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textViewQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/DarkBlue"
+        android:text="@string/quantity_of_boxes"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Delivery ImageView to display captured image -->
+    <ImageView
+        android:id="@+id/imageViewDelivery"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/DarkerWhite"
+        android:contentDescription="@string/delivery_image" />
+
+    <!-- Capture Image Button -->
+    <Button
+        android:id="@+id/buttonCaptureImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/capture_image"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/DarkBlue"
+        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
+        android:textSize="16sp" />
+
+    <!-- Confirm Delivery Button -->
+    <Button
+        android:id="@+id/buttonConfirmDelivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_delivery"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/DarkBlue"
+        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:textSize="16sp" />
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/DarkBlue"
+        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/powered_by_assethub"
+        android:textColor="@color/DarkBlue"
+        android:textSize="14sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
+
