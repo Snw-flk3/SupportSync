@@ -28,9 +28,13 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # Build with Gradle
+      # Build with Gradle (including R8 minification)
       - name: Build with Gradle
-        run: ./gradlew build 
+        run: ./gradlew build --info --stacktrace  # Added flags for more detailed output
+
+      # Optionally, you can separate the minification step if needed
+      - name: Minify Release Build
+        run: ./gradlew assembleRelease --info --stacktrace  # Use this if you want to isolate minification issues
 
       # Run tests
       - name: Run tests
