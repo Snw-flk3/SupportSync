@@ -44,7 +44,8 @@ dependencies {
     // Image loading library (choose one)
     implementation("com.github.bumptech.glide:glide:4.15.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
-    implementation("com.squareup.picasso:picasso:2.71828") // Uncomment if using Picasso
+//Piscasso is commented out to avoid duplication with glide
+   //implementation("com.squareup.picasso:picasso:2.71828") // Uncomment if using Picasso
 
     // AndroidX Libraries
     implementation("androidx.core:core-ktx:1.13.1")
@@ -53,14 +54,16 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Firebase dependencies
-    implementation(platform("com.google.firebase:firebase-bom:32.1.0")) // Import the BoM
-    implementation("com.google.firebase:firebase-auth") // Use BoM to manage versions
-    implementation("com.google.firebase:firebase-database") // Use BoM to manage versions
-    implementation("com.google.firebase:firebase-firestore") // Use BoM to manage versions
-    implementation("com.google.firebase:firebase-storage-ktx") // Use BoM to manage versions
-    implementation ("com.google.firebase:firebase-firestore-ktx:24.4.1") // Update to the latest version
-    implementation ("com.google.firebase:firebase-storage-ktx:20.1.0") // Update to the latest version
-    implementation ("androidx.appcompat:appcompat:1.5.1") // Ensure this is included
+
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0")) // Import the BoM to manage version
+    implementation("com.google.firebase:firebase-auth") // Firebase Authentication
+    implementation("com.google.firebase:firebase-database") // Firebase realtime database
+    implementation("com.google.firebase:firebase-firestore") //Firebase firestore
+    implementation("com.google.firebase:firebase-storage-ktx") // Firebase storage KTX extensions
+//Updated firebase firestore and storage ktx versions are included in the BoM, no need to specify them separately
+    //implementation ("com.google.firebase:firebase-firestore-ktx:24.4.1") // Update to the latest version
+   // implementation ("com.google.firebase:firebase-storage-ktx:20.1.0") // Update to the latest version
+   // implementation ("androidx.appcompat:appcompat:1.5.1") // Ensure this is included
 
     // Testing Libraries
     testImplementation("junit:junit:4.13.2")
