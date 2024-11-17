@@ -60,10 +60,9 @@ dependencies {
     implementation("com.google.firebase:firebase-database") // Firebase realtime database
     implementation("com.google.firebase:firebase-firestore") //Firebase firestore
     implementation("com.google.firebase:firebase-storage-ktx") // Firebase storage KTX extensions
-//Updated firebase firestore and storage ktx versions are included in the BoM, no need to specify them separately
-    //implementation ("com.google.firebase:firebase-firestore-ktx:24.4.1") // Update to the latest version
-   // implementation ("com.google.firebase:firebase-storage-ktx:20.1.0") // Update to the latest version
-   // implementation ("androidx.appcompat:appcompat:1.5.1") // Ensure this is included
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.4.1") // Update to the latest version
+    implementation ("com.google.firebase:firebase-storage-ktx:20.1.0") // Update to the latest version
+    implementation ("androidx.appcompat:appcompat:1.5.1") // Ensure this is included
 
     // Testing Libraries
     testImplementation("junit:junit:4.13.2")
