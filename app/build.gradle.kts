@@ -39,9 +39,9 @@ android {
 
 dependencies {
     // Microsoft SQL Server JDBC Driver
-    implementation("com.microsoft.sqlserver:mssql-jdbc:12.2.0.jre11")
+    implementation("com.microsoft.sqlserver:mssql-jdbc:12.2.0.jre11") // Latest version
 
-    // Image loading library
+    // Image loading library (Glide)
     implementation("com.github.bumptech.glide:glide:4.15.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
 
@@ -52,17 +52,27 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Firebase dependencies
-    implementation(platform("com.google.firebase:firebase-bom:32.1.0"))
+    implementation(platform("com.google.firebase:firebase-bom:32.1.0")) // Firebase BOM
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
 
-    // Reactor Core (for reactive programming)
+    // Bouncy Castle (for PEM files and encryption)
+    implementation("org.bouncycastle:bcprov-jdk15on:1.70")
+    implementation("org.bouncycastle:bcpkix-jdk15on:1.70")
+
+    // SLF4J (for logging)
+    implementation("org.slf4j:slf4j-api:2.0.7")
+    implementation("org.slf4j:slf4j-simple:2.0.7") // Choose a binding for SLF4J
+
+    // Reactor Core and BlockHound (for reactive programming and debugging)
     implementation("io.projectreactor:reactor-core:3.5.10")
+    implementation("io.projectreactor.tools:blockhound:1.0.8.RELEASE")
 
     // Testing Libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
+
