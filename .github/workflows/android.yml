@@ -12,9 +12,10 @@ jobs:
 
     steps:
       # Checkout the main repository with submodules
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          submodules: true  # This ensures submodules are initialized
+          submodules: true  # Ensure submodules are initialized
 
       # Set up JDK 17 for Android/Kotlin development
       - name: Set up JDK 17
@@ -30,12 +31,42 @@ jobs:
 
       # Build with Gradle (including R8 minification)
       - name: Build with Gradle
-        run: ./gradlew build --info --stacktrace  # Added flags for more detailed output
+        run: ./gradlew build --info --stacktrace  # Added flags for detailed output
 
-      # Optionally, you can separate the minification step if needed
-      - name: Minify Release Build
-        run: ./gradlew assembleRelease --info --stacktrace  # Use this if you want to isolate minification issues
+      # Optionally, assemble the release APK
+      - name: Assemble Release APK
+        run: ./gradlew assembleRelease --info --stacktrace
 
-      # Run tests
-      - name: Run tests
-        run: ./gradlew test
+      # Upload the release APK as an artifact (optional)
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release/app-release.apk
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code again for the test job
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up JDK 17 for testing
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Run Gradle tests
+      - name: Run Unit Tests
+        run: ./gradlew test --info --stacktrace
+
+      # Optionally, upload test results as an artifact
+      - name: Upload Test Results
+        if: always() # Always upload results even if tests fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: build/test-results/
