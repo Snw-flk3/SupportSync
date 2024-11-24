@@ -18,17 +18,18 @@ Support Sync is an application developed by a dedicated team of varsity college 
 
  **Technology Stack**
  
--Backend: Firebase for database management.
--Frontend: Developed with a user-focused design approach for accessibility and efficiency.
--Testing Tools: CircleCI ,DevSecOps for automated testing and Mobile Security Framework (MobSF) for vulnerability assessments.
--Collaboration Tools: GitHub for version control and team collaboration.
+ - Backend: Firebase for database management.
+ - Frontend: Developed with a user-focused design approach for accessibility and efficiency.
+ - Testing Tools: CircleCI ,DevSecOps for automated testing and Mobile Security Framework (MobSF) for vulnerability assessments.
+ - Collaboration Tools: GitHub for version control and team collaboration.
 
 **How It Works**
 
 Asset Tracking: Easily input, categorize, and track assets for better resource allocation.
 Food Package Logistics: Manage inventory, track distributions, and ensure equitable delivery.
 Reports & Analytics: Gain insights into operational efficiency through generated reports.
-Our Vision
+
+**Our Vision**
 This project is more than just software—it’s a step toward empowering organizations like Hope Worldwide to focus on what truly matters: helping communities in need. By simplifying the logistics of their operations, Support Sync helps maximize their reach and impact.
 
 **Get Involved**
