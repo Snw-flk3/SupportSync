@@ -25,9 +25,9 @@ Support Sync is an application developed by a dedicated team of varsity college 
 
 **How It Works**
 
-Asset Tracking: Easily input, categorize, and track assets for better resource allocation.
-Food Package Logistics: Manage inventory, track distributions, and ensure equitable delivery.
-Reports & Analytics: Gain insights into operational efficiency through generated reports.
+- Asset Tracking: Easily input, categorize, and track assets for better resource allocation.
+- Food Package Logistics: Manage inventory, track distributions, and ensure equitable delivery.
+- Reports & Analytics: Gain insights into operational efficiency through generated reports.
 
 **Our Vision**
 This project is more than just software—it’s a step toward empowering organizations like Hope Worldwide to focus on what truly matters: helping communities in need. By simplifying the logistics of their operations, Support Sync helps maximize their reach and impact.
