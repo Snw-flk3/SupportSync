@@ -1,5 +1,7 @@
 **Support Sync Application**
+
 **Overview**
+
 Support Sync is an application developed by a dedicated team of varsity college students to assist Hope Worldwide, an NGO focused on supporting communities in need. This project aims to provide Hope Worldwide with efficient tools for managing their assets and food package distribution, enabling them to maximize their impact on communities while focusing their resources where they are needed most.
 
 **Purpose**
