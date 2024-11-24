@@ -7,11 +7,13 @@ Support Sync is an application developed by a dedicated team of varsity college 
 **Purpose**
 
   - Non-Governmental Organizations (NGOs) like Hope Worldwide often prioritize their funding and resources toward helping those in need. However, logistical challenges in managing assets and distribution can hinder their efforts.
-- Support Sync addresses this gap by providing a streamlined in-house management solution to:
+  
+  Support Sync addresses this gap by providing a streamlined in-house management solution to:
 - Simplify the management of assets.
 - Optimize food package distribution.
 - Reduce administrative burdens so the organization can focus on its mission to help communities.
-- Key Features
+- 
+  ** Key Features**
 - Asset Management: Track and manage the organization's resources effectively.
 - Food Distribution: Streamline the logistics of food package delivery to ensure timely and equitable distribution.
 - User-Friendly Interface: Intuitive design for easy access and usability.
