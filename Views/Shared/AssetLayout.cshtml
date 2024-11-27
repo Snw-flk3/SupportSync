@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #A3C8E5; /* Subtle Hope Worldwide Blue */
+            border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            padding: 0.5rem 1.5rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem; /* Larger text for branding */
+            font-weight: bold;
+            color: #fff; /* White branding color */
+            transition: color 0.3s;
+        }
+
+            .navbar-brand:hover {
+                color: #fff;
+            }
+
+        .nav-link {
+            color: #fff !important; /* White text for links */
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+            .nav-link:hover {
+                color: #E8F5E9 !important; /* Light green on hover */
+                transform: translateY(-2px); /* Slight lift effect */
+            }
+
+        .navbar-toggler {
+            background-color: #5F8B97; /* Slightly darker blue for toggle button */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M3 7h24M3 15h24M3 23h24'/%3E%3C/svg%3E");
+        }
+
+        /* Hover Effect for Nav Links */
+        .nav-item:hover .nav-link {
+            color: #E8F5E9 !important;
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #5F8B97; /* Slightly darker blue for footer */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow above footer */
+        }
+
+            .footer .text-muted {
+                color: #b0b0b0; /* Lighter text for footer */
+            }
+
+        /* Flexbox for Navbar Items */
+        .navbar-collapse {
+            display: flex;
+            justify-content: space-between; /* Distribute items evenly */
+            align-items: center; /* Vertically align items */
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: space-around; /* Evenly space items in navbar */
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+            .navbar-nav .nav-item {
+                margin: 10px;
+            }
+
+        /* Ensure the Navbar items take full width when collapsed */
+        .navbar-collapse.collapsing {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Hope Worldwide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Asset" asp-action="Index">Asset Library</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Inventory" asp-action="Index">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="RegisterAsset" asp-action="Index">Register an Asset</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="AddEmployee" asp-action="Index">Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Profile" asp-action="Index">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="ForgotPassword" asp-action="Index">Password Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="ReportsRequests" asp-action="Dashboard">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">&copy; 2024 - Hope Worldwide</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

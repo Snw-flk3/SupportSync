@@ -1,0 +1,138 @@
+﻿@model List<HopeWorldWide.Models.ForgotPasswordRequest>
+
+@{
+    ViewBag.Title = "Forgot Password Requests";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 text-center mb-4">
+            <h2 class="fw-bold text-primary">Forgot Password Requests</h2>
+            <p class="text-muted">Review and resolve user password reset requests with ease.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light-blue">
+                        <tr>
+                            <th>Email</th>
+                            <th>Employee ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Request Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var request in Model)
+                            {
+                                <tr id="request-@request.Id">
+                                    <td>@request.Email</td>
+                                    <td>@request.EmployeeId</td>
+                                    <td>@request.FirstName</td>
+                                    <td>@request.LastName</td>
+                                    <td>@request.RequestTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-danger resolve-button" data-id="@request.Id">
+                                            Resolve
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">No requests available.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Light blue background */
+    body {
+        background-color: #f0f8ff;
+    }
+
+    /* Light blue table headers */
+    .table-light-blue {
+        background-color: #e3f2fd;
+        color: #0d47a1;
+    }
+
+    /* Hover effect for rows */
+    .table-hover tbody tr:hover {
+        background-color: #bbdefb;
+    }
+
+    /* Dark blue headers */
+    .text-primary {
+        color: #0d47a1 !important;
+    }
+
+    /* Primary button styling */
+    .btn-primary {
+        background-color: #64b5f6;
+        border-color: #64b5f6;
+    }
+
+        .btn-primary:hover {
+            background-color: #42a5f5;
+            border-color: #42a5f5;
+        }
+
+    /* Table container */
+    .table-responsive {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Action button styles */
+    .btn-danger {
+        background-color: #e57373;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+        .btn-danger:hover {
+            background-color: #ef5350;
+        }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const resolveButtons = document.querySelectorAll(".resolve-button");
+        resolveButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const id = this.getAttribute("data-id");
+                if (confirm("Are you sure you want to resolve this request?")) {
+                    fetch(`/ForgotPassword/Resolve?id=${id}`, { method: "POST" })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                document.getElementById(`request-${id}`).remove();
+                                alert("Request successfully resolved.");
+                            } else {
+                                alert("Failed to resolve the request.");
+                            }
+                        })
+                        .catch(error => alert("Error: " + error.message));
+                }
+            });
+        });
+    });
+</script>

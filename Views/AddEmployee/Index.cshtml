@@ -1,0 +1,87 @@
+﻿@model HopeWorldWide.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Add Employee";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Add Employee</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Message"]</div>
+    }
+
+    <form asp-action="Index" method="post" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <!-- First Name -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input asp-for="FirstName" class="form-control @(ViewData.ModelState["FirstName"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.FirstName)</div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input asp-for="LastName" class="form-control @(ViewData.ModelState["LastName"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.LastName)</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Employee ID -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="EmployeeId" class="form-label">Employee ID</label>
+                <input asp-for="EmployeeId" class="form-control @(ViewData.ModelState["EmployeeId"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.EmployeeId)</div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.Email)</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Password -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control @(ViewData.ModelState["Password"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.Password)</div>
+            </div>
+
+            <!-- Role -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Role" class="form-label">Role</label>
+                <select asp-for="Role" class="form-select @(ViewData.ModelState["Role"]?.Errors.Any() == true ? "is-invalid" : "")">
+                    <option value="">-- Select Role --</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Driver">Driver</option>
+                    <option value="Community Worker">Community Worker</option>
+                </select>
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.Role)</div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary px-5 py-2">
+                Add Employee
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Enable client-side validation -->
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

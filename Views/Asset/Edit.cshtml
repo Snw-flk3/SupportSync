@@ -1,0 +1,59 @@
+﻿@model HopeWorldWide.Models.Asset
+
+@{
+    ViewBag.Title = "Edit Asset";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="fw-bold text-primary">Edit Asset</h2>
+
+    <form method="post" asp-action="Edit" asp-route-id="@Model.assetCode" class="form">
+        <div class="mb-3">
+            <label for="assetCode" class="form-label">Asset Code</label>
+            <input type="text" class="form-control" id="assetCode" name="assetCode" value="@Model.assetCode" required readonly />
+        </div>
+        <div class="mb-3">
+            <label for="assetMake" class="form-label">Make</label>
+            <input type="text" class="form-control" id="assetMake" name="assetMake" value="@Model.assetMake" required />
+        </div>
+        <div class="mb-3">
+            <label for="assetModel" class="form-label">Model</label>
+            <input type="text" class="form-control" id="assetModel" name="assetModel" value="@Model.assetModel" required />
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" value="@Model.location" required />
+        </div>
+        <div class="mb-3">
+            <label for="site" class="form-label">Site</label>
+            <input type="text" class="form-control" id="site" name="site" value="@Model.site" required />
+        </div>
+        <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" id="department" name="department" value="@Model.department" required />
+        </div>
+        <div class="mb-3">
+            <label for="assetCategory" class="form-label">Category</label>
+            <input type="text" class="form-control" id="assetCategory" name="assetCategory" value="@Model.assetCategory" required />
+        </div>
+        <div class="mb-3">
+            <label for="currentValue" class="form-label">Current Value (ZAR)</label>
+            <input type="number" class="form-control" id="currentValue" name="currentValue" value="@Model.currentValue" required />
+        </div>
+        <div class="mb-3">
+            <label for="insuredValue" class="form-label">Insured Value (ZAR)</label>
+            <input type="number" class="form-control" id="insuredValue" name="insuredValue" value="@Model.insuredValue" required />
+        </div>
+        <div class="mb-3">
+            <label for="policyCover" class="form-label">Policy Cover</label>
+            <input type="checkbox" id="policyCover" name="policyCover" checked="@Model.policyCover ?? false" />
+        </div>
+        <div class="mb-3">
+            <label for="allRiskCover" class="form-label">All Risk Cover</label>
+            <input type="checkbox" id="allRiskCover" name="allRiskCover" checked="@Model.allRiskCover ?? false" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Asset</button>
+    </form>
+</div>

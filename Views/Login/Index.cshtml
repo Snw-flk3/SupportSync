@@ -1,0 +1,79 @@
+﻿@model HopeWorldWide.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "_Layout"; // Set the layout here
+}
+
+<style>
+    /* General styles for the login container */
+    .login-container {
+        max-width: 400px; /* Limit width for better focus */
+        margin: 50px auto; /* Center the container */
+        padding: 30px; /* Padding for spacing */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        background-color: #f0f8ff; /* Light baby blue background */
+        color: #333; /* Dark text color for readability */
+    }
+
+        .login-container h2 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: #4A90E2; /* Baby blue color for heading */
+        }
+
+    .form-group {
+        margin-bottom: 15px; /* Space between form elements */
+    }
+
+    .form-control {
+        border: 1px solid #4A90E2; /* Subtle border color */
+        border-radius: 5px; /* Rounded edges for input fields */
+        transition: border-color 0.3s ease; /* Smooth transition for focus */
+    }
+
+        .form-control:focus {
+            border-color: #1E88E5; /* Darker blue on focus */
+            box-shadow: 0 0 5px rgba(30, 136, 229, 0.5); /* Soft glow on focus */
+            outline: none; /* Remove default outline */
+        }
+
+    .btn-primary {
+        background-color: #4A90E2; /* Button background color */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Rounded button edges */
+        width: 100%; /* Full-width button */
+        padding: 10px; /* Padding for button */
+        font-size: 16px; /* Increase font size for better readability */
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+        .btn-primary:hover {
+            background-color: #1E88E5; /* Darker blue on hover */
+        }
+
+    .text-danger {
+        font-size: 0.9rem; /* Smaller error message font */
+        margin-top: 5px; /* Space above error messages */
+    }
+</style>
+
+<div class="login-container">
+    <h2>Login to HopeWorldWide</h2>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Email">Email Address</label>
+            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

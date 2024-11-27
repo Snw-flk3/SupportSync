@@ -1,0 +1,128 @@
+﻿@model HopeWorldWide.Models.Asset
+
+@{
+    ViewBag.Title = "Register Asset";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="text-center fw-bold mb-4">Register Asset</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Message"]</div>
+    }
+
+    <form asp-action="Index" method="post" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row gy-3">
+            <!-- Employee ID -->
+            <div class="col-md-6">
+                <label asp-for="EmployeeId" class="form-label">Employee ID</label>
+                <input asp-for="EmployeeId" class="form-control @(ViewData.ModelState["EmployeeId"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.EmployeeId)</div>
+            </div>
+
+            <!-- Asset Code -->
+            <div class="col-md-6">
+                <label asp-for="assetCode" class="form-label">Asset Code</label>
+                <input asp-for="assetCode" class="form-control @(ViewData.ModelState["assetCode"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.assetCode)</div>
+            </div>
+
+            <!-- Asset Make -->
+            <div class="col-md-6">
+                <label asp-for="assetMake" class="form-label">Asset Make</label>
+                <input asp-for="assetMake" class="form-control @(ViewData.ModelState["assetMake"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.assetMake)</div>
+            </div>
+
+            <!-- Asset Model -->
+            <div class="col-md-6">
+                <label asp-for="assetModel" class="form-label">Asset Model</label>
+                <input asp-for="assetModel" class="form-control @(ViewData.ModelState["assetModel"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.assetModel)</div>
+            </div>
+        </div>
+
+        <div class="row gy-3">
+            <!-- Location -->
+            <div class="col-md-6">
+                <label asp-for="location" class="form-label">Location</label>
+                <select asp-for="location" class="form-select @(ViewData.ModelState["location"]?.Errors.Any() == true ? "is-invalid" : "")" asp-items="@(new SelectList(ViewBag.Locations ?? new List<string>()))">
+                    <option value="">-- Select Location --</option>
+                </select>
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.location)</div>
+            </div>
+
+            <!-- Site -->
+            <div class="col-md-6">
+                <label asp-for="site" class="form-label">Site</label>
+                <select asp-for="site" class="form-select @(ViewData.ModelState["site"]?.Errors.Any() == true ? "is-invalid" : "")" asp-items="@(new SelectList(ViewBag.sites ?? new List<string>()))">
+                    <option value="">-- Select Site --</option>
+                </select>
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.site)</div>
+            </div>
+
+            <!-- Department -->
+            <div class="col-md-6">
+                <label asp-for="department" class="form-label">Department</label>
+                <select asp-for="department" class="form-select @(ViewData.ModelState["department"]?.Errors.Any() == true ? "is-invalid" : "")" asp-items="@(new SelectList(ViewBag.departments ?? new List<string>()))">
+                    <option value="">-- Select Department --</option>
+                </select>
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.department)</div>
+            </div>
+
+            <!-- Asset Category -->
+            <div class="col-md-6">
+                <label asp-for="assetCategory" class="form-label">Asset Category</label>
+                <select asp-for="assetCategory" class="form-select @(ViewData.ModelState["assetCategory"]?.Errors.Any() == true ? "is-invalid" : "")" asp-items="@(new SelectList(ViewBag.assetCategories ?? new List<string>()))">
+                    <option value="">-- Select Category --</option>
+                </select>
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.assetCategory)</div>
+            </div>
+        </div>
+
+        <div class="row gy-3">
+            <!-- Current Value -->
+            <div class="col-md-6">
+                <label asp-for="currentValue" class="form-label">Current Value</label>
+                <input asp-for="currentValue" type="number" step="0.01" class="form-control @(ViewData.ModelState["currentValue"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.currentValue)</div>
+            </div>
+
+            <!-- Insured Value -->
+            <div class="col-md-6">
+                <label asp-for="insuredValue" class="form-label">Insured Value</label>
+                <input asp-for="insuredValue" type="number" step="0.01" class="form-control @(ViewData.ModelState["insuredValue"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.insuredValue)</div>
+            </div>
+        </div>
+
+        <div class="row gy-3">
+            <!-- All Risk Cover -->
+            <div class="col-md-6">
+                <div class="form-check">
+                    <input asp-for="allRiskCover" class="form-check-input" />
+                    <label asp-for="allRiskCover" class="form-check-label">All Risk Cover</label>
+                </div>
+            </div>
+
+            <!-- Policy Cover -->
+            <div class="col-md-6">
+                <div class="form-check">
+                    <input asp-for="policyCover" class="form-check-input" />
+                    <label asp-for="policyCover" class="form-check-label">Policy Cover</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary px-5 py-2">
+                Register Asset
+            </button>
+        </div>
+    </form>
+</div>

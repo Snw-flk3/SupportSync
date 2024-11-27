@@ -1,0 +1,129 @@
+﻿@model List<HopeWorldWide.Models.Asset>
+
+@{
+    ViewBag.Title = "Asset Library";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 text-center mb-4">
+            <h2 class="fw-bold text-primary">Asset Library</h2>
+            <p class="text-muted">Explore and manage your assets efficiently with a modern interface.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-8">
+            <form method="get" action="@Url.Action("Index", "Asset")" class="d-flex">
+                <input type="text"
+                       name="searchQuery"
+                       placeholder="Search assets by keyword..."
+                       class="form-control me-2 shadow-sm"
+                       value="@ViewBag.SearchQuery" />
+                <button type="submit" class="btn btn-primary shadow-sm">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light-blue">
+                        <tr>
+                            <th>Asset Code</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Location</th>
+                            <th>Site</th>
+                            <th>Department</th>
+                            <th>Category</th>
+                            <th>Assigned User</th>
+                            <th>Current Value (ZAR)</th>
+                            <th>Insured Value (ZAR)</th>
+                            <th>Policy Cover</th>
+                            <th>All Risk Cover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var asset in Model)
+                        {
+                            <tr>
+                                <td>@asset.assetCode</td>
+                                <td>@asset.assetMake</td>
+                                <td>@asset.assetModel</td>
+                                <td>@asset.location</td>
+                                <td>@asset.site</td>
+                                <td>@asset.department</td>
+                                <td>@asset.assetCategory</td>
+                                <td>@asset.EmployeeId</td>
+                                <td>R @String.Format("{0:N2}", asset.currentValue)</td>
+                                <td>R @String.Format("{0:N2}", asset.insuredValue)</td>
+                                <td class="text-center">
+                                    <span class="badge bg-@(asset.policyCover ? "success" : "danger")">
+                                        @(asset.policyCover ? "Yes" : "No")
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-@(asset.allRiskCover ? "success" : "danger")">
+                                        @(asset.allRiskCover ? "Yes" : "No")
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Overall background is light blue */
+    body {
+        background-color: #f0f8ff;
+    }
+
+    /* Light blue for table headers */
+    .table-light-blue {
+        background-color: #e3f2fd;
+        color: #0d47a1;
+    }
+
+    /* Table hover color */
+    .table-hover tbody tr:hover {
+        background-color: #bbdefb;
+    }
+
+    /* Text primary override for dark blue headers */
+    .text-primary {
+        color: #0d47a1 !important;
+    }
+
+    /* Buttons with light blue theme */
+    .btn-primary {
+        background-color: #64b5f6;
+        border-color: #64b5f6;
+    }
+
+        .btn-primary:hover {
+            background-color: #42a5f5;
+            border-color: #42a5f5;
+        }
+
+    /* Table borders and layout */
+    .table-responsive {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .badge-success {
+        background-color: #81c784;
+    }
+
+    .badge-danger {
+        background-color: #e57373;
+    }
+</style>

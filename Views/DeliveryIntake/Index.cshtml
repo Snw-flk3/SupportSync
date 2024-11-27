@@ -1,0 +1,51 @@
+﻿@model HopeWorldWide.Models.Intake
+
+@{
+    ViewBag.Title = "Delivery Intake";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Register Delivery Intake</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["Message"]</div>
+    }
+
+    <form asp-action="Index" method="post" class="needs-validation" novalidate>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <!-- Purchase Order Number Field -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="poNumber" class="form-label">Purchase Order Number</label>
+                <input asp-for="poNumber" class="form-control @(ViewData.ModelState["poNumber"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.poNumber)</div>
+            </div>
+
+            <!-- Company Field -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="company" class="form-label">Company</label>
+                <input asp-for="company" class="form-control @(ViewData.ModelState["company"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.company)</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Intake Quantity Field -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="inQuantity" class="form-label">Intake Quantity</label>
+                <input asp-for="inQuantity" class="form-control @(ViewData.ModelState["inQuantity"]?.Errors.Any() == true ? "is-invalid" : "")" type="number" />
+                <div class="invalid-feedback">@Html.ValidationMessageFor(m => m.inQuantity)</div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+                Register Intake
+            </button>
+        </div>
+    </form>
+</div>

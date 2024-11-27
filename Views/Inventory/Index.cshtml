@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/AssetLayout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">Inventory Dashboard</h1>
+        <p class="text-muted">Monitor and manage your current stock levels with real-time updates.</p>
+    </div>
+
+    <div class="row justify-content-center align-items-center mb-5">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h2 class="display-4 fw-bold text-success">
+                        <i class="bi bi-box-seam"></i> @ViewBag.InventoryQuantity
+                    </h2>
+                    <p class="text-muted mb-0">Items Currently in Stock</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <canvas id="inventoryChart" height="100"></canvas>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Delivery Intake</h5>
+                    <p class="card-text">New items added to your stock are automatically included in the intake collection.</p>
+                    <!-- Update link to navigate to DeliveryIntake page -->
+                    <a href="@Url.Action("Index", "DeliveryIntake")" class="btn btn-outline-primary">Intake</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">Delivery History</h5>
+                    <p class="card-text">Monitor changes to your stock levels in real time for better decision-making.</p>
+                    <!-- Update link to navigate to Delivery History page -->
+                    <a href="@Url.Action("Dashboard", "Delivery")" class="btn btn-outline-warning">History</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional Chart Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ctx = document.getElementById('inventoryChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Intake Quantity', 'Stock Quantity', 'Current Inventory'],
+                datasets: [{
+                    label: 'Inventory Data',
+                    data: [@ViewBag.IntakeQuantity, @ViewBag.StockQuantity, @ViewBag.InventoryQuantity],
+                    backgroundColor: ['#007bff', '#ffc107', '#28a745']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.label}: ${context.raw} items`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Quantity'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
